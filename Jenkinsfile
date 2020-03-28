@@ -1,19 +1,19 @@
 pipeline {
   agent any
   stages {
-    stage("Build") {
+    stage("Clone repo...") {
       steps {
-        echo "building..."
+        git poll: true, url: 'https://github.com/carlosseco29/JenkinsTests.git'
       }
     }
-    stage("Test") {
+    stage("Run Hello World script") {
       steps {
-        echo "testing..."
+        sh JenkinsTests/myscript.sh
       }
     }
-    stage("Package") {
+    stage("Exit") {
       steps {
-        echo "packaging..."
+        echo "Exiting..."
       }
     }
   }
