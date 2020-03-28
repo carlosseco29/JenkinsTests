@@ -8,7 +8,7 @@ pipeline {
     }
     stage("Run Hello World script") {
       steps {
-        sh "JenkinsTests/myscript.sh"
+        sh "./myscript.sh"
       }
     }
     stage("Exit") {
