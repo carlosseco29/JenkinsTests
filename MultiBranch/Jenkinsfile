@@ -7,7 +7,9 @@ pipeline {
   stages {
     stage("Clone repo...") {
       steps {
-        git poll: true, url: 'https://github.com/carlosseco29/JenkinsTests.git'
+        git poll: true, 
+	branch: env.BRANCH_NAME,
+	url: 'https://github.com/carlosseco29/JenkinsTests.git'
       }
     }
     stage("Run Hello World script") {
