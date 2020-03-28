@@ -12,8 +12,30 @@ pipeline {
 	url: 'https://github.com/carlosseco29/JenkinsTests.git'
       }
     }
-    stage("Run Hello World script") {
+    stage("Run Hello World script master") {
+      when {
+        branch 'master'
+      }
       steps {
+        echo "master branch"
+        sh "./myscript.sh"
+      }
+    }
+    stage("Run Hello World script develop") {
+      when {
+        branch 'develop'
+      }
+      steps {
+        echo "develop branch"
+        sh "./myscript.sh"
+      }
+    }
+    stage("Run Hello World script feature") {
+      when {
+        expression { BRANCH_NAME ==~ /(feature_.*)/ }
+      }
+      steps {
+        echo "feature branch"
         sh "./myscript.sh"
       }
     }
