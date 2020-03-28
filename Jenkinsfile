@@ -1,6 +1,9 @@
 pipeline {
-  properties([gitLabConnection(''), pipelineTriggers([githubPush(), pollSCM('* * * * *')])])
   agent any
+  triggers {
+    // poll repo every 1 minute for changes
+    pollSCM('* * * * *')
+  }  
   stages {
     stage("Clone repo...") {
       steps {
