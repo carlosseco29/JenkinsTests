@@ -1,4 +1,5 @@
 pipeline {
+  properties([gitLabConnection(''), pipelineTriggers([githubPush(), pollSCM('* * * * *')])])
   agent any
   stages {
     stage("Clone repo...") {
